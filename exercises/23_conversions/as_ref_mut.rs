@@ -7,8 +7,6 @@
 // Execute `rustlings hint as_ref_mut` or use the `hint` watch subcommand for a
 // hint.
 
-
-
 use std::os::unix::ffi::OsStrExt;
 
 // Obtain the number of bytes (not characters) in the given argument.

@@ -13,8 +13,6 @@
 //
 // No hints this time ;)
 
-
-
 // Put your function here!
 fn calculate_price_of_apples(apples: u64) -> u64 {
     if apples > 40 {

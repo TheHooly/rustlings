@@ -9,8 +9,6 @@
 // Execute `rustlings hint iterators3` or use the `hint` watch subcommand for a
 // hint.
 
-
-
 #[derive(Debug, PartialEq, Eq)]
 pub enum DivisionError {
     NotDivisible(NotDivisibleError),
@@ -28,10 +26,12 @@ pub struct NotDivisibleError {
 pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
     return match a {
         a if b == 0 => Err(DivisionError::DivideByZero),
-        a if a % b != 0 => Err(DivisionError::NotDivisible(NotDivisibleError{dividend: a, divisor: b})),
-        _ => Ok(a / b)
-    }
-    
+        a if a % b != 0 => Err(DivisionError::NotDivisible(NotDivisibleError {
+            dividend: a,
+            divisor: b,
+        })),
+        _ => Ok(a / b),
+    };
 }
 
 // Complete the function and return a value of the correct type so the test
@@ -39,7 +39,8 @@ pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
 // Desired output: Ok([1, 11, 1426, 3])
 fn result_with_list() -> Result<Vec<i32>, DivisionError> {
     let numbers = vec![27, 297, 38502, 81];
-    let division_results = numbers.into_iter().map(|n| divide(n, 27)).collect/*::<Result<Vec<i32>, DivisionError>>*/();
+    let division_results =
+        numbers.into_iter().map(|n| divide(n, 27)).collect/*::<Result<Vec<i32>, DivisionError>>*/();
     division_results
 }
 

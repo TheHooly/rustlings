@@ -28,8 +28,6 @@ enum IntoColorError {
     IntConversion,
 }
 
-
-
 // Your task is to complete this implementation and return an Ok result of inner
 // type Color. You need to create an implementation for a tuple of three
 // integers, an array of three integers, and a slice of integers.
@@ -52,7 +50,7 @@ impl TryFrom<(i16, i16, i16)> for Color {
         Ok(Color {
             red: tuple.0.try_into()?,
             green: tuple.1.try_into()?,
-            blue: tuple.2.try_into()?
+            blue: tuple.2.try_into()?,
         })
     }
 }
@@ -64,7 +62,7 @@ impl TryFrom<[i16; 3]> for Color {
         Ok(Color {
             red: arr[0].try_into()?,
             green: arr[1].try_into()?,
-            blue: arr[2].try_into()?
+            blue: arr[2].try_into()?,
         })
     }
 }
@@ -79,7 +77,7 @@ impl TryFrom<&[i16]> for Color {
             Ok(Color {
                 red: slice[0].try_into()?,
                 green: slice[1].try_into()?,
-                blue: slice[2].try_into()?
+                blue: slice[2].try_into()?,
             })
         }
     }
