@@ -46,6 +46,13 @@ impl State {
         // TODO: create a match expression to process the different message variants
         // Remember: When passing a tuple as a function argument, you'll need extra parentheses:
         // fn function((t, u, p, l, e))
+        use Message::*;
+        match message {
+            ChangeColor(r, g, b) => self.change_color((r, g, b)),
+            Echo(s) => self.echo(s),
+            Move(p) => self.move_position(p),
+            Quit => self.quit()
+        }
     }
 }
 
