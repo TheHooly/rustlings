@@ -42,26 +42,21 @@ impl Default for Person {
 
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
-        if s == "" {
-            return Person::default();
-        }
         let input: Vec<&str> = s.split(',').collect();
-        if input.len() != 2 {
-            return Person::default();
+
+        if input.len() < 2 {
+            return Person::default()
         }
-        let name;
-        if input[0] == "" {
-            return Person::default();
-        } else {
-            name = input[0].to_string();
+
+        let name = String::from(input[0]);
+        if name.is_empty() {
+            return Person::default()
         }
-        let age: usize;
-        if let Err(_) = input[1].parse::<usize>() {
-            return Person::default();
-        } else {
-            age = input[1].parse().unwrap();
+
+        return match input[1].parse::<usize>() {
+            Ok(age) => Person { name, age },
+            Err(_) => Person::default()
         }
-        Person { name, age }
     }
 }
 
